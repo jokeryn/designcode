@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        .box1,.box2{
+            width: 220px;
+            height: 300px;
+            background-color: #fff;
+            float: left;
+            margin: 0 10px;
+            transition: all .3s;
+        }
+       
+        .box1:hover,.box2:hover{
+            transform: translateY(-4px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+
+        .box3{
+            width: 200px;
+            height: 200px;
+            border: 1px red solid;
+            overflow: hidden;
+        }
+
+        img{
+            transition: .2s;
+        }
+
+        .box3:hover img{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <div class="box3">
+        <img src="./复仇者/5.jpg">
+    </div>
+</body>
+</html>

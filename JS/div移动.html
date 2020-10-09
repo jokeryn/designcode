@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div移动</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // div根据不同的方向键向不同的方向前进
+        window.onload=function(){
+
+             // 定义一个速度变量
+            var speed=10;
+
+            // 定义一个方向变量
+            var dir=0;
+
+            // 开启一个定时器，来控制div的移动
+            setInterval(function(){
+                switch(dir){
+                // 向左
+                case 37:
+                    box1.style.left=box1.offsetLeft-speed+"px";
+                    break;
+                // 向右
+                case 39:
+                    box1.style.left=box1.offsetLeft+speed+"px";
+                    break;
+                // 向上
+                case 38:
+                    box1.style.top=box1.offsetTop-speed+"px";
+                    break;
+                // 向下
+                case 40:
+                    box1.style.top=box1.offsetTop+speed+"px";
+                    break;
+                };
+            },30);
+
+            // 为document绑定一个按键按下的事件
+            document.onkeydown=function(event){
+
+                event=event||window.event;
+               
+                // 按下ctrl以后，速度变快
+                if(event.ctrlKey){
+                    speed=50;
+                }else{
+                    speed=10;
+                }
+
+                // dir等于按键值
+                dir=event.keyCode;
+            };
+
+            // 当按键松开时，div不再移动
+            document.onkeyup=function(){
+                dir=0;
+            }
+        };
+        
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            position: absolute;
+        }
+
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // 拖拽box1元素
+        window.onload=function(){
+            // 设置box1的监听事件
+            var box1=document.getElementById("box1");
+
+            var box2=document.getElementById("box2");
+
+            drag(box1);
+
+            drag(box2);
+            // 当鼠标在被拖拽元素上按下时，开始拖拽
+            // box1.onmousedown=function(event){
+
+            //     event=event||window.event;
+
+            //     // div的偏移量
+            //     var ol=event.clientX-box1.offsetLeft;
+            //     var ot=event.clientY-box1.offsetTop;
+
+            //     //为document绑定一个鼠标移动事件
+            //     document.onmousemove=function(event){
+            //         event=event||window.event;
+                    
+            //         var left=event.clientX-ol;
+            //         var top=event.clientY-ot;
+
+            //         // 修改box1的位置
+            //         box1.style.left=left+"px";
+            //         box1.style.top=top+"px";
+            //     } ;
+
+            //     // 为document绑定一个鼠标松开事件
+            //     document.onmouseup=function(){
+            //         // 取消鼠标移动事件
+            //         document.onmousemove=null;
+            //         // 取消鼠标松开事件
+            //         document.onmouseup=null;
+            //     };
+
+            //     // 取消浏览器的默认搜索行为
+            //     return false;
+            // };
+        };
+
+        // 设置一个专门拖拽的函数
+        function drag(obj){
+            // 当鼠标在被拖拽元素上按下时，开始拖拽
+            obj.onmousedown=function(event){
+
+                event=event||window.event;
+
+                // div的偏移量
+                var ol=event.clientX-obj.offsetLeft;
+                var ot=event.clientY-obj.offsetTop;
+
+                //为document绑定一个鼠标移动事件
+                document.onmousemove=function(event){
+                event=event||window.event;
+                    
+                var left=event.clientX-ol;
+                var top=event.clientY-ot;
+
+                // 修改box1的位置
+                obj.style.left=left+"px";
+                obj.style.top=top+"px";
+                };
+
+                // 为document绑定一个鼠标松开事件
+                document.onmouseup=function(){
+                    // 取消鼠标移动事件
+                    document.onmousemove=null;
+                    // 取消鼠标松开事件
+                    document.onmouseup=null;
+                };
+
+                // 取消浏览器的默认搜索行为
+                return false;
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

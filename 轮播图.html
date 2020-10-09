@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        
+        .img_list{
+            width: 590px;
+            height: 470px;
+            background-color: #bfa;
+
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        .img_list li{
+            position: absolute;
+        }
+
+        .img_list li:nth-child(4){
+            z-index: 1;
+        }
+
+        .pointer{
+            position: absolute;
+            z-index: 9999;
+            bottom: 20px;
+            margin-left: 40px;
+        }
+
+        .pointer a{
+            width: 10px;
+            height: 10px;
+            margin-left: 4px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .6);
+            float: left;
+            background-clip: content-box;
+            border: 2px solid transparent;
+        }
+        
+        .pointer a.active,a:hover{
+            background-color: #fff;
+            border: 2px solid rgba(255, 255, 255, .6);
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="img_list">
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+        <li><a href="javascript:;"><img src="" alt=""></a></li>
+
+        <div class="pointer">
+            <a class="active" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </ul>
+</body>
+</html>
