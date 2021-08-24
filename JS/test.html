@@ -1,21 +1,54 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js-test</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #leftnav{
+            width: 200px;
+            /* height: 100%; */
+            float: left;
+            border: 1px solid red;
+        }
+        #rightnav{
+            height: 100%;
+            float: left;
+            border: 1px solid yellow;
+        }
+    </style>
     <script type="text/javascript">
         window.onload=function(){
-            var btn=document.getElementById("btn");
-            btn.onclick=function(){
+            var btn1=document.getElementById("btn1");
+            btn1.onclick=function(){
                 alert("爬");
+            }
+
+            var btn2=document.getElementById("btn2");
+            btn2.onclick=function(){
+                alert("傻逼");
             }
         }
     </script>
-    
+  
 </head>
 <body>
-    <button id="btn">我是一个按钮</button>
+    <div id="leftnav">
+        <button id="btn1">我是一个按钮</button>
+    </div>
+    <div id="rightnav">
+        <button id="btn2">哈哈哈</button>
+    </div>
+
+    <input id="hh" value="hello"></input>
+    <script type="text/javascript">
+        var a=document.getElementById("hh").nodeValue
+        alert(a)
+    </script>
     <!-- <script type="text/javascript">
         var btn=document.getElementById("btn");
         btn.onmousemove=function(){

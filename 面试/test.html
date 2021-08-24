@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let num = 3
+    const test = function() {
+        num += 3
+        setTimeout(() => {
+            num += 5
+            console.log(1)
+            console.log(num)
+        }, 0)
+
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(num *= 2)
+            }, 0)
+        }).then(res => {
+            console.log(2)
+            console.log(res)
+        })
+        console.log(3)
+        console.log(num)
+    }
+    test()
+    console.log(4)
+    console.log(num - 3)
+    // let num = parseInt(823) 
+    // let n = []
+    // for (let i = 0; i < num; i++) {
+    //     if (num % i === 0) {
+    //         n.push(i)
+    //     }
+    // }
+    // console.log(n)
+    // let s1 = 'igtxbesmnyrehanvuvqhukrtmpynmpdvjlppuq', s2 = 'wiumbxibguwicjfyvkznbqzvo'
+    // let A = [], s = ''
+    // let B = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    //         // ["i", "g", "t", "x", "b", "e", "s", "m", "n", "y", "r", "h", "a", "v", "u", "q", "k", "p", "d", "j", "l", "c", "f", "o", "w", "z"]
+    // for (let i = 0; i < s1.length; i++) {
+    //     if (A.indexOf(s1[i]) == -1) {
+    //         A.push(s1[i])
+    //     }
+    // }
+    // for (let i = 97 ; i <= 122; i++) {
+    //     let z = String.fromCharCode(i)
+    //     if (!A.includes(z)) {
+    //         A.push(z)
+    //     }
+    // }
+    // for (let i = 0; i < s2.length; i++) {
+    //     B.forEach(item => {
+    //         if(item === s2[i]){
+    //             // console.log(B.indexOf(item))
+    //             s += A[B.indexOf(item)]
+    //         }
+    //     })
+    // }
+    // console.log(s)
+    // console.log(A)
+    // A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+    // N I H A O B C D E F G J K L M P
+    // function get(n){
+    //     let a=1;
+    //     let b=2;
+    //     if(n<=0){
+    //         return 0;
+    //     }else{
+    //         if(n==1)
+    //             return n;
+    //         else{
+    //             for(let i=2;i<=n;i++){
+    //                 b=2*a;
+    //                 a=b;
+    //             }
+    //             return b;
+    //         }
+    //     }   
+    // } 
+    // console.log(get(5))
+
+    // let num = parseInt(9)
+    // let arr = []
+    // for (let i = 1; i < num; i++) {
+    //     let sum = 0, k = []
+    //     for (let j = i; j < num; j++) {
+    //         sum += j
+    //         k.push(j)
+    //         if (sum === num) {
+    //             // console.log(k)
+    //             arr.push(k.join('+'))
+    //         }
+    //     }
+    // }
+    // arr.push(num + '')
+    // arr.reverse()
+    // arr.forEach(item => {
+    //     console.log(num + '=' + item)
+    // })
+    // console.log('Result:' + arr.length)
+</script>
+</html>

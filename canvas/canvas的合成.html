@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="400" id="myCanvas">
+
+    </canvas>
+    <script>
+        // canvas的动画思想：清屏、更新、渲染，重新画
+        var canvas = document.getElementById("myCanvas")
+        // 获取上下文
+        var ctx = canvas.getContext("2d")
+        ctx.fillStyle = "skyblue"
+        ctx.fillRect(100, 100, 100, 100)
+        ctx.fillStyle = "deeppink"
+        ctx.beginPath()
+        ctx.arc(200, 200, 60, 0, 7, false)
+        ctx.fill()
+    </script>
+</body>
+</html>

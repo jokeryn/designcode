@@ -150,7 +150,7 @@
     
 }
 
-.shop-cart:hover .shop-list,
+/* .shop-cart:hover .shop-list,
 .shop-cart:hover .shop-list span{
     display: block;
     height: 100px;
@@ -160,6 +160,19 @@
 .shop-list span{
     font-size: 12px;
     display: none;
+} */
+
+.shop-cart:hover .shop-list,
+.shop-cart:hover .shop-list span{
+    display: inline-block;
+    vertical-align: middle;
+    height: 100px;
+}
+
+.shop-list span{
+    font-size: 12px;
+    display: none;
+    margin: 44px auto; 
 }
 
 .header-wrapper{

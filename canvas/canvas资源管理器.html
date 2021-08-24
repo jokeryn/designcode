@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="400" id="myCanvas">
+
+    </canvas>
+    <script>
+        // canvas的动画思想：清屏、更新、渲染，重新画
+        var canvas = document.getElementById("myCanvas")
+        // 获取上下文
+        var ctx = canvas.getContext("2d")
+        
+        // 游戏类
+        function Game(){
+            this.dom = document.querySelector("canvas")
+            this.ctx = this.dom.getContext("2d")
+
+            //添加属性,保存需要的图片路径
+            this.R = {
+                "heiguafu":"../复仇者/1.jpg",
+                "leishen":"../复仇者/2.jpg",
+                "haoke":"../复仇者/3.jpg",
+                "meiguoduzhang":"../复仇者/4.jpg",
+                "hongnvwu":"../复仇者/5.jpg",
+                "lianmeng":"../复仇者/6.jpg"
+            }
+            // 获取资源图片的总数
+            var allImg = Object.keys(this.R).length
+            // 计数器,记录加载完毕的数量
+            var count = 0
+            // 遍历对象获取每个图片的路径
+            for (k in this.R) {
+                // 备份每一张图片的路径
+                var src = this.R[k]
+                // 创建一个图片对象
+                this.R[k] = new Image()
+                // 赋值src图片路径
+                this.R[k].src = src
+                // 判断图片是否加载完成
+                // 备份上下文
+                let _this = this
+                this.R[k].onload = function(){
+                    // 增加计数器
+                    count++
+                    // 清屏
+                    _this.ctx.clearRect(0, 0, 500, 400)
+                    _this.ctx.font = "16px Arial"
+                    _this.ctx.fillText("图片已经加载:" + count + "/" + allImg, 10, 50)
+                    // 图片加载完毕,开始游戏
+                    if(count == allImg){
+                        _this.start()
+                    }
+                }
+            }
+        }
+
+        Game.prototype.start = function(){
+            this.ctx.drawImage(this.R["hongnvwu"],200,200,100,100)
+        }
+        console.log(new Game)
+
+    </script>
+</body>
+</html>

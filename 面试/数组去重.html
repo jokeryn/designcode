@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组去重</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = ['12', '32', '89', '12', '12', '78', '12', '32']
+    // 最简单数组去重法
+    function unique1(array) {
+        var n = []
+        for(var i = 0; i < array.length; i++) {
+            if (n.indexOf(array[i]) == -1) {
+                n.push(array[i])
+            }
+        }
+        return n
+    }
+    arr = unique1(arr)
+    // 速度最快 占空间最多(空间换时间)
+    function unique2(array) {
+        var n = [], r = [], type
+        debugger
+        for(var i = 0; i < array.length; i++) {
+            type = typeof array[i]
+            if (!n[array[i]]){
+                n[array[i]] = type
+                r.push(array[i])
+            } else if(n[array[i]].indexOf(type) < 0) {
+                n[array[i]].push(type)
+                r.push(array[i])
+            }
+        }
+        return r
+    }
+    arr = unique2(arr)
+    // 数组下标判断法
+    function unique3(array){
+        var n = [array[0]]
+        for(var i = 1; i < array.length; i++) {
+            if(array.indexOf(array[i]) == i) {
+                n.push(array[i])
+            }
+        }
+        return n
+    }
+    arr = unique3(arr)
+    es6方法
+    arr = [...new Set(arr)]
+    // es6第二中方法
+    function dedupe(array){
+        return Array.from(new Set(array)) // Array.from()能把Set结构转换为数组
+    }
+    console.info(arr)
+</script>
+</html>

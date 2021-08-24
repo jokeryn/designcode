@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas tutorial</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgba(0, 0, 0, 0.1)
+            }
+    
+            canvas {
+                display: block;
+                margin: 200px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas width="300" height="300"></canvas>
+        <script>
+            var canvas = document.querySelector("canvas");
+            var ctx = canvas.getContext("2d");
+            function Ball(x,y,r){
+            //传入小球的属性，x和y表示小球left和top的位置
+            this.x = x;
+            this.y = y;
+            this.r = r;
+            //当增量的dx、dy都为0的时候再随机一次
+            do{
+                this.dx = parseInt(Math.random() * 18) - 9;
+                this.dy = parseInt(Math.random() * 18) - 9;
+            }while(this.dx == 0 || this.dy == 0);
+            //随机颜色
+            var colors = ['#f90','#ff0','#09c','#c06','#F99','#9c3','#6cc','#9cc'];
+            this.color = colors[parseInt(Math.random() * colors.length)]
+            arr.push(this); //将小球的实例放进数组
+            }
+            //渲染方法，画一个小球
+            Ball.prototype.render = function(){
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0,Math.PI * 2 ,false);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            }
+            Ball.prototype.update = function(){
+            this.x += this.dx;
+            this.y += this.dy;
+            if(this.x >= canvas.width - this.r || this.x <= this.r){
+                this.dx = -this.dx
+            }
+            if(this.y >= canvas.height - this.r || this.y <= this.r){
+                this.dy = -this.dy;
+            }
+            }
+            var arr = [];
+            var f = 0;
+            //开始定时器，每一帧清屏、更新、渲染所有小球
+            setInterval(function(){
+            f++;
+            //清屏
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            //渲染
+            for(var i = 0;i < arr.length;i++){
+                arr[i].render();
+                arr[i].update();
+            }
+            ctx.font = "18px 微软雅黑";
+            ctx.fillStyle = "blue";
+            ctx.fillText(f, 10, 20)
+            },20);
+            var count = 60;
+            while(count--){
+            new Ball(100,100,20);
+            }
+        </script>
+    </body>
+</html>

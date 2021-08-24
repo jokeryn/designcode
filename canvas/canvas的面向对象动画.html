@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="500" id="myCanvas">
+
+    </canvas>
+    <script>
+        // canvas的动画思想：清屏、更新、渲染，重新画
+        var canvas = document.getElementById("myCanvas")
+        // 获取上下文
+        var ctx = canvas.getContext("2d")
+        function Rect(x,y,w,h,color){
+            this.x = x
+            this.y = y
+            this.w = w
+            this.h = h
+            this.color = color
+        }
+        // 更新
+        Rect.prototype.update = function() {
+            this.x++
+        }
+        // 重新渲染
+        Rect.prototype.render = function() {
+            ctx.fillStyle = this.color
+            ctx.fillRect(this.x,this.y,this.w,this.h)
+        }
+        // 实例化
+        var r1 = new Rect(100,100,50,50,"green")
+        // 动画过程
+        setInterval(function() {
+            // 清除画布
+            ctx.clearRect(0,0,canvas.width,canvas.height)
+            // 更新
+            r1.update()
+            // 重新绘制
+            r1.render()
+        },10)
+    </script>
+</body>
+</html>

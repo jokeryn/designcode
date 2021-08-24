@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid #000;
+            width: 250px;
+            height: 60px;
+            font-size: 40px;
+            line-height: 60px;
+            text-align: center;
+            position: relative;
+            user-select: none;
+        }
+
+        canvas{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        特等奖
+        <canvas width="250px" height="60px" id="myCanvas"></canvas>   
+    </div>
+    
+    <script>
+        // canvas的动画思想：清屏、更新、渲染，重新画
+        var canvas = document.getElementById("myCanvas")
+        // 获取上下文
+        var ctx = canvas.getContext("2d")
+        ctx.fillStyle = "#333"
+        ctx.fillRect(0, 0, 250, 60)
+        // 设置新画上的元素
+        ctx.globalCompositeOperation = "destination-out"
+
+        // 鼠标按下
+        canvas.onmousedown = function(){
+            // 拖动
+            canvas.onmousemove = function(){
+                ctx.beginPath()
+                ctx.arc(event.offsetX, event.offsetY, 10, 0, 7, false)
+                ctx.fill()
+            }
+        }
+    </script>
+</body>
+</html>

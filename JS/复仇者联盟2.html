@@ -19,8 +19,44 @@
         }
     </style>
 
-    <!-- 点击切换图片 -->
+    <script type="text/javascript" src="../JQuery/jquery-3.5.1.js"></script>
     <script type="text/javascript">
+        $(function(){
+            // 创建一个数组，存放图片路径
+            var imgArr=["../复仇者/1.jpg","../复仇者/2.jpg","../复仇者/3.jpg",
+            "../复仇者/4.jpg","../复仇者/5.jpg","../复仇者/6.jpg"];
+
+            // 创建一个指针，图片的索引
+            var index=0;
+
+            // 设置提示文字
+            var msg="一共"+imgArr.length+"张图片，这是第"+(index+1)+"张"
+
+            $("#info").text(msg);
+
+            $("#prev").click(function(){
+                if(index==0){
+                    index=imgArr.length;
+                }
+                index--;
+                $("img").attr("src",imgArr[index])
+                msg="一共"+imgArr.length+"张图片，这是第"+(index+1)+"张";
+                $("#info").text(msg);
+            });
+
+            $("#next").click(function(){
+                if(index==imgArr.length-1){
+                    index=-1;
+                }
+                index++;
+                $("img").attr("src",imgArr[index])
+                msg="一共"+imgArr.length+"张图片，这是第"+(index+1)+"张";
+                $("#info").text(msg);
+            });
+        })
+    </script>
+    <!-- 点击切换图片 -->
+    <!-- <script type="text/javascript">
         
         // 获取两个按钮的单机点击事件
         window.onload = function(){
@@ -60,7 +96,7 @@
             };
 
         }
-    </script>
+    </script> -->
 </head>
 <body>
     <div id="outer">
